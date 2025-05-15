@@ -771,7 +771,7 @@ class CodeActAgentGroup:
             'instance': instance_list,
             'resolved': resolved_list,
             'finish': has_finish_action_list,
-            "response_texts": full_response_texts,
+            # "response_texts": full_response_texts,
         }
         
         # Create and return DataProto

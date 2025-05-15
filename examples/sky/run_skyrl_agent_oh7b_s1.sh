@@ -1,8 +1,9 @@
 PROJECT_NAME='oh-7b-training'
 EXPERIMENT_NAME='SkyRL-Agent-7b-v0-stage1'
-DATA_PATH="<path_to_swegym_dataset>"
+DATA_PATH="/shared_workspace/datasets/SkyRL-v0-80-data"
 SFT_MODEL_PATH='NovaSky-AI/SWE-Gym-OpenHands-7B-Agent'
-CKPT_PATH='<path_to_ckpt>'
+CKPT_PATH='/home/original_models/sky-rl/stage1'
+touch "$CKPT_PATH/$PROJECT_NAME/$EXPERIMENT_NAME/testfile"
 
 
 BATCH_SIZE=16
@@ -19,13 +20,18 @@ CLIP_RATIO_LOW=0.2
 CLIP_RATIO_HIGH=0.2
 
 GPU_MEM_UTIL=0.8
-TP_SIZE=1
+# TP_SIZE=1
 # Assumes a h200 node
 # For 2xH100: change tp size -> 2, sequence parallel size -> 2, nnodes -> 2
 NNODES=1
-SP_SIZE=1
+# SP_SIZE=1
 TEMPERATURE=0.5
 TOP_P=0.95
+
+TP_SIZE=1
+SP_SIZE=1
+# Can only do NNODES=1 for now
+NNODES=1
 
 
 
