@@ -559,7 +559,7 @@ class CodeActAgentGroup:
         tokenizer: Any = None,
         sampling_params: Any = None,
         device: Any = None,
-        log_messages_dir: str = None,
+        log_messages_dir: str = "/tmp/agent_logs/",
         remove_think_tokens: bool = False,
         qwen3_enable_thinking: bool = True
     ) -> None:

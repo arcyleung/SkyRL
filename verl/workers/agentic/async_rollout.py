@@ -2,6 +2,7 @@
 # TODO(haoran): time control; loss_mask
 # TODO(haoran): check reason for loading weight
 import logging
+import json
 import os
 from functools import partial
 from json import JSONDecodeError
@@ -113,4 +114,6 @@ class AsyncRollout(BaseRollout):
 
         results = codeact_agent_group.run()
         logger.info(f"nodedup finish generate seq {torch.distributed.get_rank()=} {self.tp_rank=}")
+        logger.info(f"codeact_agent_group results: {results}")
+
         return results

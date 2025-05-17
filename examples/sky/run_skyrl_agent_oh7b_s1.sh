@@ -1,4 +1,4 @@
-PROJECT_NAME='oh-7b-training'
+PROJECT_NAME='oh-7b-training-arthurtest'
 EXPERIMENT_NAME='SkyRL-Agent-7b-v0-stage1'
 DATA_PATH="/shared_workspace/datasets/SkyRL-v0-80-data"
 SFT_MODEL_PATH='NovaSky-AI/SWE-Gym-OpenHands-7B-Agent'
@@ -9,7 +9,7 @@ touch "$CKPT_PATH/$PROJECT_NAME/$EXPERIMENT_NAME/testfile"
 BATCH_SIZE=16
 MAX_NUM_ITERS=15
 NUM_TRAJ=16
-MAX_PARALLEL_AGENTS=64
+MAX_PARALLEL_AGENTS=32
 SAVE_FREQ=1
 
 USE_KL_LOSS=True
