@@ -1345,7 +1345,16 @@ class CodeActAgentGroup:
         all_tasks = all_tasks.union(active_eval_tasks)
         if all_tasks:
             logger.info(f"Waiting for {len(all_tasks)} (init: {len(active_init_tasks)}, run: {len(active_run_tasks)}, eval: {len(active_eval_tasks)}) remaining tasks to complete")
-            await asyncio.wait(all_tasks)
+            try:
+                timeout = 900
+                done, pending = await asyncio.wait(all_tasks, timeout=timeout)  # 10 minutes
+                if pending:
+                    logger.error(f"Timeout reached: {len(pending)} tasks did not finish within {timeout}s . Cancelling pending tasks.")
+                    for task in pending:
+                        logger.error(f"Pending task: {task}")
+                        task.cancel()
+            except Exception as e:
+                logger.error(f"Exception while waiting for tasks: {e}")
 
         results_dataproto = self._convert_results_to_dataproto()
         return results_dataproto

@@ -1,15 +1,15 @@
-PROJECT_NAME='oh-7b-training'
+PROJECT_NAME='oh-7b-training-arthurtest'
 EXPERIMENT_NAME='SkyRL-Agent-7b-v0-stage2'
-DATA_PATH="<path_to_swegym_dataset>"
-SFT_MODEL_PATH='PATH_FROM_STAGE1'
-CKPT_PATH='<path_to_ckpt>'
+DATA_PATH="/shared_workspace/datasets/SkyRL-v0-220-data"
+SFT_MODEL_PATH='/home/original_models/sky-rl/stage1/oh-7b-training-arthurtest/SkyRL-Agent-7b-v0-stage1/'
+CKPT_PATH='/home/original_models/sky-rl/stage2'
 
 
-BATCH_SIZE=16
+BATCH_SIZE=8
 MAX_NUM_ITERS=25
 NUM_TRAJ=16
 MAX_PARALLEL_AGENTS=64
-SAVE_FREQ=1
+SAVE_FREQ=2
 
 USE_KL_LOSS=True
 KL_LOSS_COEF=0.001
