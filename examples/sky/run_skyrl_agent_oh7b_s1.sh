@@ -9,7 +9,7 @@ touch "$CKPT_PATH/$PROJECT_NAME/$EXPERIMENT_NAME/testfile"
 BATCH_SIZE=8
 MAX_NUM_ITERS=15
 NUM_TRAJ=16
-MAX_PARALLEL_AGENTS=32
+MAX_PARALLEL_AGENTS=16
 SAVE_FREQ=2
 
 USE_KL_LOSS=True
@@ -19,7 +19,7 @@ ENTROPY_COEFF=0
 CLIP_RATIO_LOW=0.2
 CLIP_RATIO_HIGH=0.2
 
-GPU_MEM_UTIL=0.8
+GPU_MEM_UTIL=0.3
 # TP_SIZE=1
 # Assumes a h200 node
 # For 2xH100: change tp size -> 2, sequence parallel size -> 2, nnodes -> 2
@@ -40,7 +40,7 @@ PYTHONUNBUFFERED=1 uv run --isolated --directory . --frozen --env-file .env -m v
     data.train_files=["$DATA_PATH/train.parquet"] \
     data.val_files=["$DATA_PATH/validation.parquet"] \
     data.train_batch_size=$BATCH_SIZE \
-    data.max_prompt_length=31232 \
+    data.max_prompt_length=15616 \
     data.max_response_length=1536 \
     data.truncation='error' \
     actor_rollout_ref.model.path=$SFT_MODEL_PATH \
@@ -89,6 +89,6 @@ PYTHONUNBUFFERED=1 uv run --isolated --directory . --frozen --env-file .env -m v
     trainer.nnodes=$NNODES \
     trainer.save_freq=$SAVE_FREQ \
     data.dataloader_num_workers=0 \
-    actor_rollout_ref.exchange_size=500000000 \
+    actor_rollout_ref.exchange_size=200000000 \
     trainer.test_freq=-1 \
     trainer.total_epochs=100 $@

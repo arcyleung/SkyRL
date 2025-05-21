@@ -851,7 +851,9 @@ class CodeActAgentGroup:
                 default_agent='OnlineCodeActAgent',
                 run_as_openhands=False,
                 max_iterations=self.max_iterations,
-                runtime='remote',
+                # runtime="remote",
+                # ARTHUR: FIXME: for now, we use docker runtime to avoid the issue of remote runtime
+                runtime="docker",
                 sandbox=sandbox_config,
                 workspace_base=None,
                 workspace_mount_path=None,
@@ -1128,7 +1130,9 @@ class CodeActAgentGroup:
             sandbox_config.remote_runtime_resource_factor = 1
             config = AppConfig(
                 run_as_openhands=False,
-                runtime="remote",
+                # runtime="remote",
+                # ARTHUR: FIXME: for now, we use docker runtime to avoid the issue of remote runtime
+                runtime="docker",
                 sandbox=sandbox_config,
                 # do not mount workspace
                 workspace_base=None,
